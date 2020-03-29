@@ -6,6 +6,11 @@ export default function DevForm({ onSubmit }) {
     const [latitude, setLatitude] = useState('')
     const [longitude, setLongitude] = useState('')
 
+    function handleTechs(techs) {
+        techs = techs.toUpperCase()
+        setTechs(techs)
+    }
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(position => {
             const { latitude: browserLatitude, longitude: browserLongitude } = position.coords
@@ -54,7 +59,7 @@ export default function DevForm({ onSubmit }) {
                     id="techs"
                     required
                     value={techs}
-                    onChange={e => setTechs(e.target.value)}
+                    onChange={e => handleTechs(e.target.value)}
                 />
             </div>
 
